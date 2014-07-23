@@ -121,7 +121,7 @@ class HtmlEditorField extends TextareaField {
 		}
 
 		// Resample images and add default attributes
-		if($images = $htmlValue->getElementsByTagName('img')) foreach($images as $img) {
+		if(!$this->config()->no_image_resampling && $images = $htmlValue->getElementsByTagName('img')) foreach($images as $img) {
 			// strip any ?r=n data from the src attribute
 			$img->setAttribute('src', preg_replace('/([^\?]*)\?r=[0-9]+$/i', '$1', $img->getAttribute('src')));
 
